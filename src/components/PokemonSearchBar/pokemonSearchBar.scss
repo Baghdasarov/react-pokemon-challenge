@@ -1,0 +1,40 @@
+.search-content {
+  position: relative;
+  margin: 20px auto;
+  width: 50%;
+  text-align: center;
+
+  .search-box {
+    input {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+  }
+
+  .search-result {
+    position: absolute;
+    text-align: left;
+    width: 100%;
+    max-height: 50vh;
+    padding: 1rem .75rem;
+    overflow: auto;
+    z-index: 1;
+    background: white;
+    border: 1px solid gray;
+
+    .item {
+      cursor: pointer;
+      padding: 10px 0;
+      border-bottom: 1px solid lightgray;
+    }
+  }
+}

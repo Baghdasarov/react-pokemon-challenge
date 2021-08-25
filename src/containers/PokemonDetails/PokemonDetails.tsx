@@ -57,8 +57,8 @@ const PokemonDetails = () => {
             </ul>
             <div className="pokemonDetails-stats">
               Stats
-              {data?.stats.map((item: IPokemonStats) => (
-                <ul>
+              {data?.stats.map((item: IPokemonStats, index: number) => (
+                <ul key={index}>
                   <li>
                     <b>Base stat: </b>
                     {item.base_stat}

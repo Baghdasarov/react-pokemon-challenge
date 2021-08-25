@@ -47,7 +47,7 @@ const PokemonList = ({
       </div>
       <Pagination
         pageSize={pageSize}
-        total={totalCount - pageSize}
+        total={totalCount - pageSize || 0}
         current={currentPage}
         onChange={handleChangePage}
       />

@@ -52,13 +52,17 @@ const PokemonDetails = () => {
           <div className="full-info">
             <ul className="pokemonDetails-species">
               Species
-              <li>{data.species.name}</li>
-              <li>{renderLink(data.species.url || "")}</li>
+              <li>
+                <b>Name:</b> {data.species.name}
+              </li>
+              <li>
+                <b>URL:</b> {renderLink(data.species.url || "")}
+              </li>
             </ul>
             <div className="pokemonDetails-stats">
               Stats
               {data.stats.map((item: IPokemonStats, index: number) => (
-                <ul key={index}>
+                <ul key={index + "state"}>
                   <li>
                     <b>Base stat: </b>
                     {item.base_stat}
@@ -81,7 +85,7 @@ const PokemonDetails = () => {
             <ul className="pokemonDetails-types">
               Types
               {data.types.map((item: IPokemonTypes, index: number) => (
-                <div key={index}>
+                <div key={index + "types"}>
                   <li>
                     <b>Slot:</b> {item.slot}
                   </li>
@@ -98,7 +102,7 @@ const PokemonDetails = () => {
             <div className="pokemonDetails-moves">
               Moves
               {data.moves.map((item: IPokemonMoves, index: number) => (
-                <ul className="moves-start" key={index}>
+                <ul className="moves-start" key={index + "moves"}>
                   <span>General</span>
                   <li>
                     <b>Name:</b> {item.move.name}
@@ -110,7 +114,7 @@ const PokemonDetails = () => {
                     <span>Version group details</span>
                     {item.version_group_details.map(
                       (subItem: IPokemonVersionGroupDetails, key: number) => (
-                        <div key={key}>
+                        <div key={key + "version_group_details"}>
                           <li>
                             <b>Level learned at:</b> {subItem.level_learned_at}
                           </li>

@@ -1,8 +1,24 @@
-# Getting Started with Create React App
+### A little about the structure:
+api: all API requests \
+components: all components \
+containers: main parts of the project, pages. \
+interfaces: typescript interfaces main part which usable in other places also \
+routes: routing \
+styles: global style
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Brief about solution
+My solution is simple. I use containers as main pages and components for write base logic there.
+More interested part I think is search, because we haven't search endpoint and I done custom solution
+If I had more time I added more information on details page and on code part I added webpack, env, eslint and maybe
+improve code to more globally.
+
+---
 
 ## Available Scripts
+
+In the project directory, you want to install:
+
+### `yarn install`
 
 In the project directory, you can run:
 

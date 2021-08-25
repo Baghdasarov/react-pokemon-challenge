@@ -11,7 +11,7 @@ interface IPokemonSearchBar {
 }
 
 const PokemonSearchBar = ({ handleItemClick }: IPokemonSearchBar) => {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState<INameUrl[]>([]);
   const [searchValue, setSearchValue] = useState("");
 
   const { data } = useRequest(() => getPokemonsList());
@@ -26,7 +26,6 @@ const PokemonSearchBar = ({ handleItemClick }: IPokemonSearchBar) => {
       return item.name.toLowerCase().includes(searchValue.toLowerCase());
     });
 
-    // @ts-ignore
     setPokemons(pokemons);
   }, [searchValue]);
 

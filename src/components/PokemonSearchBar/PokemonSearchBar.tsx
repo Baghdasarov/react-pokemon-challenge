@@ -17,21 +17,22 @@ const PokemonSearchBar = ({ handleItemClick }: IPokemonSearchBar) => {
   const { data } = useRequest(() => getPokemonsList());
 
   useEffect(() => {
-    if (searchValue.length <= 3) {
+    if (searchValue.length <= 3 || !data) {
       setPokemons([]);
       return;
     }
 
-    let pokemons = data.results.filter((item: INameUrl) => {
+    const pokemons = data.results.filter((item: INameUrl) => {
       return item.name.toLowerCase().includes(searchValue.toLowerCase());
     });
 
+    // @ts-ignore
     setPokemons(pokemons);
   }, [searchValue]);
 
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  function handleChangeSearch(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchValue(e.target.value);
-  };
+  }
 
   return (
     <div className="search-content">

@@ -31,7 +31,7 @@ const PokemonDetails = () => {
     <div className="pokemonDetails">
       {loading ? (
         <h1>Loading...</h1>
-      ) : (
+      ) : data ? (
         <>
           <div className="main-info-content">
             <div className="nav-content">
@@ -41,8 +41,8 @@ const PokemonDetails = () => {
             </div>
             <h2 className="title">Main information about {data.name}</h2>
             <div>
-              <img src={data?.sprites.front_default} alt="front_default" />
-              <img src={data?.sprites.back_default} alt="front_default" />
+              <img src={data.sprites.front_default} alt="front_default" />
+              <img src={data.sprites.back_default} alt="front_default" />
             </div>
             <div>
               <b>Weight:</b> {data.weight}
@@ -52,12 +52,12 @@ const PokemonDetails = () => {
           <div className="full-info">
             <ul className="pokemonDetails-species">
               Species
-              <li>{data?.species.name}</li>
-              <li>{renderLink(data?.species.url)}</li>
+              <li>{data.species.name}</li>
+              <li>{renderLink(data.species.url || "")}</li>
             </ul>
             <div className="pokemonDetails-stats">
               Stats
-              {data?.stats.map((item: IPokemonStats, index: number) => (
+              {data.stats.map((item: IPokemonStats, index: number) => (
                 <ul key={index}>
                   <li>
                     <b>Base stat: </b>
@@ -80,8 +80,8 @@ const PokemonDetails = () => {
             </div>
             <ul className="pokemonDetails-types">
               Types
-              {data?.types.map((item: IPokemonTypes) => (
-                <>
+              {data.types.map((item: IPokemonTypes, index: number) => (
+                <div key={index}>
                   <li>
                     <b>Slot:</b> {item.slot}
                   </li>
@@ -92,13 +92,13 @@ const PokemonDetails = () => {
                     <b>URL: </b>
                     {renderLink(item.type.url)}
                   </li>
-                </>
+                </div>
               ))}
             </ul>
             <div className="pokemonDetails-moves">
               Moves
-              {data?.moves.map((item: IPokemonMoves) => (
-                <ul className="moves-start">
+              {data.moves.map((item: IPokemonMoves, index: number) => (
+                <ul className="moves-start" key={index}>
                   <span>General</span>
                   <li>
                     <b>Name:</b> {item.move.name}
@@ -109,8 +109,8 @@ const PokemonDetails = () => {
                   <ul>
                     <span>Version group details</span>
                     {item.version_group_details.map(
-                      (subItem: IPokemonVersionGroupDetails) => (
-                        <>
+                      (subItem: IPokemonVersionGroupDetails, key: number) => (
+                        <div key={key}>
                           <li>
                             <b>Level learned at:</b> {subItem.level_learned_at}
                           </li>
@@ -134,7 +134,7 @@ const PokemonDetails = () => {
                               {renderLink(subItem.version_group.url)}
                             </li>
                           </ul>
-                        </>
+                        </div>
                       )
                     )}
                   </ul>
@@ -143,6 +143,8 @@ const PokemonDetails = () => {
             </div>
           </div>
         </>
+      ) : (
+        <h1>No result...</h1>
       )}
     </div>
   );

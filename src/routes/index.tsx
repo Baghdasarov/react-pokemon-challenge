@@ -6,8 +6,7 @@ import { PokemonDetails, Pokemons } from "../containers";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/" exact={true} component={Pokemons} />
-      <Route path="/pokemons" exact={true} component={Pokemons} />
+      <Route path={["/", "/pokemons"]} exact={true} component={Pokemons} />
       <Route path="/pokemon/:id" exact={true} component={PokemonDetails} />
 
       <Route path="/404" render={() => <h1>Page Not Found</h1>} />

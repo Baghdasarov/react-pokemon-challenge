@@ -35,8 +35,8 @@ const Pokemons = () => {
       <PokemonSearchBar handleItemClick={handleItemClick} />
       <div className="pokemons-list">
         <PokemonList
-          list={data?.results}
-          totalCount={data?.count}
+          list={data?.results || []}
+          totalCount={data?.count || 0}
           pageSize={PAGE_SIZE}
           loading={loading}
           currentPage={currentPage}
